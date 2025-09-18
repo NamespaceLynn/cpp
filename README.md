@@ -4,14 +4,22 @@ _Work in progress — might `#include <mistakes>`._
 ## Essentials
 
 ### [Value Categories](https://en.cppreference.com/w/cpp/language/value_category.html) <sub>_All categories are valuable._</sub>
-`glvalue (generalised lvalue)`: it's a thing that where it now goes to
-
-> TODO
-
-|                  		   | glvalue <br>(identity) | <br>(identityless) |
+|                  		     | glvalue <br>(identity) | <br>(identityless) |
 |--------------------------|------------------------|--------------------|
-| **rvalue <br>(movable)** | `xvalue` 				| `prvalue` 	     |
-| **(immovable)** 		   | `lvalue` 				|                 	 |
+| **rvalue <br>(movable)** | `xvalue` 				      | `prvalue` 	       |
+| **(immovable)** 		     | `lvalue` 				      |                 	 |
+
+`glvalue (generalised lvalue)`: values with an _identity_, encapsulating `lvalues` and `xvalues`.
+<br>`rvalue (right value)`: values that can be moved, encapsulating `xvalues` and `prvalues`.
+
+> Values have an **_identity_** if they have an accessible address.
+> <br>This includes variables, the dereferenced `this` pointer, string literals, etc.
+> <br>Values without identity (`prvalues`) include literals, the `this` pointer, temporary objects (often as the result of an expression), etc.
+> <br>Such values seize to exist if they are not defined.
+
+> **_Moving_** a variable refers to reusing its resources to construct/assign another object.
+> <br>For example, ownership of data pointers is transferred, instead of making a copy of the data.
+> <br>Read more in this section blabla
 
 ### Move Semantics
 _Now for my next move..._
