@@ -3,17 +3,17 @@ _Work in progress — might `#include <mistakes>`._
 
 ## Essentials
 
-### [Value Categories](https://en.cppreference.com/w/cpp/language/value_category.html) <sub>_All categories are valuable._</sub>
+### [Value Categories](https://en.cppreference.com/w/cpp/language/value_category.html) <sub>_All categories have value._</sub>
 |                  		      | glvalue <br>(identity) | <br>(identityless) |
 |--------------------------|------------------------|--------------------|
 | **rvalue <br>(movable)** | `xvalue` 				          | `prvalue` 	        |
 | **(immovable)** 		       | `lvalue` 				          |                 	  |
 
-`glvalue (generalised lvalue)`: values with an _identity_, encapsulating `lvalues` and `xvalues`.
-<br>`rvalue (right value)`: values that can be moved, encapsulating `xvalues` and `prvalues`.
-<br>`lvalue (right value)`: values that cannot be moved.
-<br>`xvalue (eXpiring value)`: the result of applying `std::move` to an `lvalue`.
-<br>`prvalue (pure rvalue)`: values without an _identity_.
+`glvalue`: (generalised lvalue) values with an _identity_, encapsulating `lvalues` and `xvalues`.
+<br>`rvalue`: (right value) values that can be moved, encapsulating `xvalues` and `prvalues`.
+<br>`lvalue`: (right value) values that cannot be moved.
+<br>`xvalue`: (eXpiring value) the result of applying `std::move` to an `lvalue`.
+<br>`prvalue`: (pure rvalue) values without an _identity_.
 
 > Values have an **_identity_** if they have an accessible address.
 > <br>This includes variables, the dereferenced `this` pointer, string literals, etc.
