@@ -1,6 +1,10 @@
 # Lynn's C++ notes
 _Work in progress — might `#include <mistakes>`._
 
+## Contents
+1. [**Value Categories**](#value-categories--all-categories-have-value)
+2. [Move Semantics](#move-semantics--now-for-my-next-move)
+
 ## Essentials
 
 ### [Value Categories](https://en.cppreference.com/w/cpp/language/value_category.html) / <sub>_All categories have value._</sub>
@@ -62,7 +66,7 @@ int main()
 
 > **_Moving_** a variable refers to reusing its resources to construct/assign another object.
 > <br>For example, ownership of data pointers is transferred, instead of making a copy of the data.
-> <br>Continue reading about move semantics [here](#move-semantics).
+> <br>Continue reading about move semantics [here](#move-semantics--now-for-my-next-move).
 
 ### [Move Semantics](https://en.cppreference.com/w/cpp/utility/move.html) / <sub>_Now for my next move..._</sub>
 
@@ -113,7 +117,7 @@ int main()
 
 `std::forward`: preserves the value category of a `forwarding reference`.
 <br>`Forwarding references`: a parameter preserving value category in tandem with `std::forward`.
-<sub>[| std::forward](https://en.cppreference.com/w/cpp/utility/forward.html)</sub>
+<br><sub>[std::forward](https://en.cppreference.com/w/cpp/utility/forward.html)</sub>
 <sub>[| forwarding references](https://en.cppreference.com/w/cpp/language/reference.html)</sub> 
 <sub>[| reference collapsing](https://en.cppreference.com/w/cpp/language/reference.html)</sub>
 
