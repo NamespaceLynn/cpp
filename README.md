@@ -2,8 +2,9 @@
 _Work in progress — might `#include <mistakes>`._
 
 ## Contents
+
 1. [**Value Categories**](#value-categories--all-categories-have-value)
-2. [Move Semantics](#move-semantics--now-for-my-next-move)
+2. [**Move Semantics**](#move-semantics--now-for-my-next-move)
 
 ## Essentials
 
@@ -71,8 +72,7 @@ int main()
 ### [Move Semantics](https://en.cppreference.com/w/cpp/utility/move.html) / <sub>_Now for my next move..._</sub>
 
 `std::move`: converts `lvalues` to `xvalues`. 
-<br><sub>[std::move](https://en.cppreference.com/w/cpp/utility/move.html)</sub>
-<sub>[| reference collapsing](https://en.cppreference.com/w/cpp/language/reference.html)</sub>
+<br><sub>[std::move](https://en.cppreference.com/w/cpp/utility/move.html) [|]() [reference collapsing](https://en.cppreference.com/w/cpp/language/reference.html)</sub>
 
 - `std::move` turns an `lvalue` into an `rvalue reference` by removing the current reference (if any) and adding `&&`.
     - The current reference must be removed in case the value is an `lvalue reference`, because _reference collapsing_ rules tell us `& &&` becomes `&`, while we want an `rvalue reference` (the symbol for which is `&&`).
@@ -117,9 +117,7 @@ int main()
 
 `std::forward`: preserves the value category of a `forwarding reference`.
 <br>`Forwarding references`: a parameter preserving value category in tandem with `std::forward`.
-<br><sub>[std::forward](https://en.cppreference.com/w/cpp/utility/forward.html)</sub>
-<sub>[| forwarding references](https://en.cppreference.com/w/cpp/language/reference.html)</sub> 
-<sub>[| reference collapsing](https://en.cppreference.com/w/cpp/language/reference.html)</sub>
+<br><sub>[std::forward](https://en.cppreference.com/w/cpp/utility/forward.html) [|]() [forwarding references](https://en.cppreference.com/w/cpp/language/reference.html) [|]() [reference collapsing](https://en.cppreference.com/w/cpp/language/reference.html)</sub>
 
 - `Forwarding references` are also known as `universal references`.
 - Both are used for templated functions, when you want to take in any value category.
