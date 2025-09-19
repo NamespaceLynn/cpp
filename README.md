@@ -3,11 +3,11 @@ _Work in progress — might `#include <mistakes>`._
 
 ## Essentials
 
-### [Value Categories](https://en.cppreference.com/w/cpp/language/value_category.html) <sub>_All categories have value._</sub>
-|                  		      | glvalue <br>(identity) | <br>(identityless) |
+### [Value Categories](https://en.cppreference.com/w/cpp/language/value_category.html) / <sub>_All categories have value._</sub>
+|                          | glvalue <br>(identity) | <br>(identityless) |
 |--------------------------|------------------------|--------------------|
-| **rvalue <br>(movable)** | `xvalue` 				          | `prvalue` 	        |
-| **(immovable)** 		       | `lvalue` 				          |                 	  |
+| **rvalue <br>(movable)** | `xvalue`               | `prvalue`          |
+| **(immovable)**          | `lvalue`               |                    |
 
 `glvalue`: (generalised lvalue) values with an _identity_, encapsulating `lvalues` and `xvalues`.
 <br>`rvalue`: (right value) values that can be moved, encapsulating `xvalues` and `prvalues`.
@@ -15,6 +15,7 @@ _Work in progress — might `#include <mistakes>`._
 <br>`xvalue`: (eXpiring value) the result of applying `std::move` to an `lvalue`.
 <br>`prvalue`: (pure rvalue) values without an _identity_.
 - Conversions always result in a `prvalue`, demonstrated with the following code snippet:
+
 ```cpp
 void fn( int&& ) {}
 void fn( float&& ) {}
@@ -22,8 +23,8 @@ void fn( float&& ) {}
 int main()
 {
     int i{};
-    // 'i' cannot find an appropriate 'fn' overload taking an lvalue
-    // 'i' can be implicitly converted to a 'float&&'
+    // 'i' cannot find an appropriate 'fn' overload taking an lvalue 'int'
+    // 'i' can be implicitly converted to 'float&&'
     // Thus, 'fn( float&& )` is invoked
     fn( i );
 }
