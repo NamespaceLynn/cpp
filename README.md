@@ -14,6 +14,20 @@ _Work in progress — might `#include <mistakes>`._
 <br>`lvalue`: (right value) values that cannot be moved.
 <br>`xvalue`: (eXpiring value) the result of applying `std::move` to an `lvalue`.
 <br>`prvalue`: (pure rvalue) values without an _identity_.
+- Conversions always result in a `prvalue`, demonstrated with the following code snippet:
+```cpp
+void fn( int&& ) {}
+void fn( float&& ) {}
+
+int main()
+{
+    int i{};
+    // 'i' cannot find an appropriate 'fn' overload taking an lvalue
+    // 'i' can be implicitly converted to a 'float&&'
+    // Thus, 'fn( float&& )` is invoked
+    fn( i );
+}
+```
 
 > Values have an **_identity_** if they have an accessible address.
 > <br>This includes variables, the dereferenced `this` pointer, string literals, etc.
