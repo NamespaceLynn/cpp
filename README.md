@@ -14,6 +14,31 @@ _Work in progress — might `#include <mistakes>`._
 <br>`lvalue`: (right value) values that cannot be moved.
 <br>`xvalue`: (eXpiring value) the result of applying `std::move` to an `lvalue`.
 <br>`prvalue`: (pure rvalue) values without an _identity_.
+
+- Here I have provided a list of most instances of each value category:
+
+```cpp
+// lvalues
+int i;          // Named variables are lvalues
+"Hello World!"; // String literals have lvalue type 'const char(&)[N]'
+*this;          // The dereferenced 'this' pointer is an lvalue
+void fn() {}    // 'fn' is an lvalue
+struct { static void fn() {} }; // Static member functions are lvalues
+
+// xvalues
+std::move( i );
+
+// prvalues
+42; true; nullptr; // Literals are prvalues (except for string literals)
+enum { val };      // Enum values are prvalues
+i++;               // Post-increment/decrement expressions are prvalues
+&i;                // A variable's address is a prvalue
+int{};             // Temporary materialisation results in a prvalue
+this;              // The 'this' pointer is a prvalue
+struct { void fn() {} }; // Non-static member functions are prvalues
+// Arithmetic, logical, and comparison expressions also result in prvalues
+```
+
 - Conversions always result in a `prvalue`, demonstrated with the following code snippet:
 
 ```cpp
@@ -39,7 +64,7 @@ int main()
 > <br>For example, ownership of data pointers is transferred, instead of making a copy of the data.
 > <br>Continue reading about move semantics [here](#move-semantics).
 
-### [Move Semantics](https://en.cppreference.com/w/cpp/utility/move.html) <sub>_Now for my next move..._</sub>
+### [Move Semantics](https://en.cppreference.com/w/cpp/utility/move.html) / <sub>_Now for my next move..._</sub>
 
 `std::move`: converts `lvalues` to `xvalues`. 
 <br><sub>[std::move](https://en.cppreference.com/w/cpp/utility/move.html)</sub>
