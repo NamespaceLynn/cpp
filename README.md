@@ -42,6 +42,7 @@ int{};             // Temporary materialisation results in a prvalue
 this;              // The 'this' pointer is a prvalue
 struct { void fn() {} }; // Non-static member functions are prvalues
 // Arithmetic, logical, and comparison expressions also result in prvalues
+// Note that the above refers to built-in operations, not user-defined overloads
 ```
 
 - Conversions always result in a `prvalue`, demonstrated with the following code snippet:
