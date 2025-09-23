@@ -91,8 +91,15 @@ struct A
     A( const A& other )
     {
         size = other.size;
-        data = new char[size];
-        std::memcpy( data, other.data, size );
+        if (other.data)
+        {
+            data = new char[size];
+            std::memcpy( data, other.data, size );
+        }
+        else
+        {
+            data = nullptr;
+        }
     }
     // Move constructor
     // Takes in an rvalue (xvalue and prvalue)
